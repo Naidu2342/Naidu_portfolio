@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lakshmi Narayana Naidu | Portfolio</title>
+
+  <!-- FontAwesome CDN for social icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <style>
+    /* Reset */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #0a0a0a;
+      color: #e0e0e0;
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* Background blobs */
+    .blob {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.6;
+      animation: blobMove 20s infinite alternate ease-in-out;
+      z-index: -1;
+    }
+    .blob1 {
+      width: 350px;
+      height: 350px;
+      background: #00ffd5;
+      top: 10%;
+      left: -150px;
+      animation-delay: 0s;
+    }
+    .blob2 {
+      width: 400px;
+      height: 400px;
+      background: #00b39f;
+      bottom: 15%;
+      right: -200px;
+      animation-delay: 10s;
+    }
+    @keyframes blobMove {
+      0% {
+        transform: translate(0, 0) scale(1);
+      }
+      50% {
+        transform: translate(30px, -30px) scale(1.1);
+      }
+      100% {
+        transform: translate(0, 0) scale(1);
+      }
+    }
+
+    /* Container */
+    .container {
+      max-width: 900px;
+      margin: 80px auto 60px;
+      padding: 1.5rem;
+      backdrop-filter: saturate(180%) blur(20px);
+      background: rgba(10, 10, 10, 0.85);
+      border-radius: 15px;
+      box-shadow: 0 0 25px #00ffd5aa;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+      user-select: none;
+    }
+    .profile-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.2rem;
+    }
+    .profile-img {
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid #00ffd5;
+      box-shadow: 0 0 20px #00ffd5;
+      animation: float 4s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+    header h1 {
+      font-size: 3.8rem;
+      font-weight: 900;
+      background: linear-gradient(90deg, #00ffd5, #00b39f);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      animation: gradient-slide 5s linear infinite;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+    }
+    @keyframes gradient-slide {
+      0% {
+        background-position: 0% 50%;
+      }
+      100% {
+        background-position: 100% 50%;
+      }
+    }
+    @media (min-width: 600px) {
+      .profile-container {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 2.5rem;
+      }
+      header h1 {
+        font-size: 4.5rem;
+        letter-spacing: 8px;
+      }
+    }
+
+    /* Sections */
+    section {
+      margin-bottom: 2.5rem;
+    }
+    h2 {
+      font-size: 2rem;
+      border-bottom: 2px solid #00ffd5;
+      padding-bottom: 6px;
+      margin-bottom: 1rem;
+      letter-spacing: 1.5px;
+      color: #00ffd5;
+    }
+    p, li {
+      font-size: 1.1rem;
+      margin-bottom: 0.7rem;
+    }
+    ul {
+      list-style-type: square;
+      padding-left: 20px;
+    }
+
+    /* Skills */
+    .skill {
+      margin-bottom: 1rem;
+    }
+    .skill-name {
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+    .skill-bar {
+      background: #121212;
+      border-radius: 25px;
+      overflow: hidden;
+      height: 18px;
+      box-shadow: inset 0 0 5px #00ffd5aa;
+    }
+    .skill-level {
+      height: 100%;
+      background: linear-gradient(90deg, #00ffd5, #00b39f);
+      width: 0;
+      border-radius: 25px;
+      animation: loadSkill 2s forwards;
+    }
+    /* Different animation delays for stagger effect */
+    .skill-level.html { animation-delay: 0.3s; }
+    .skill-level.css { animation-delay: 0.6s; }
+    .skill-level.js { animation-delay: 0.9s; }
+    .skill-level.python { animation-delay: 1.2s; }
+    .skill-level.cybersec { animation-delay: 1.5s; }
+
+    @keyframes loadSkill {
+      to { width: var(--skill-width); }
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 0.7rem 1.4rem;
+      margin-top: 1rem;
+      background: linear-gradient(90deg, #00ffd5, #00b39f);
+      color: #000;
+      font-weight: 700;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.4s ease;
+      box-shadow: 0 5px 15px #00ffd5aa;
+      user-select: none;
+    }
+    .btn:hover {
+      background: linear-gradient(90deg, #00b39f, #00ffd5);
+      box-shadow: 0 0 25px #00ffd5;
+    }
+
+    /* Social icons */
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 1rem;
+    }
+    .social-links a {
+      color: #00ffd5;
+      font-size: 1.8rem;
+      transition: color 0.3s ease;
+      user-select: none;
+    }
+    .social-links a:hover {
+      color: #00b39f;
+    }
+
+    /* Contact form */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 450px;
+      margin: auto;
+    }
+    input, textarea {
+      padding: 0.8rem;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      background: #121212;
+      color: #e0e0e0;
+      box-shadow: inset 0 0 8px #00ffd5aa;
+      resize: vertical;
+      transition: box-shadow 0.3s ease;
+    }
+    input:focus, textarea:focus {
+      box-shadow: 0 0 12px #00b39f;
+    }
+    button[type="submit"] {
+      background: linear-gradient(90deg, #00ffd5, #00b39f);
+      color: #000;
+      font-weight: 700;
+      border: none;
+      border-radius: 25px;
+      padding: 0.8rem;
+      cursor: pointer;
+      box-shadow: 0 5px 15px #00ffd5aa;
+      transition: background 0.4s ease;
+    }
+    button[type="submit"]:hover {
+      background: linear-gradient(90deg, #00b39f, #00ffd5);
+      box-shadow: 0 0 25px #00ffd5;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background blobs -->
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+
+  <div class="container">
+    <header>
+      <div class="profile-container">
+        <img src="/storage/emulated/0/portfolio /assets/IMG_20250409_183118_840.jpg" alt="Lakshmi Narayana Naidu" class="profile-img" />
+        <h1>LAKSHMI NARAYANA NAIDU</h1>
+      </div>
+      <div class="nav-buttons">
+  <a href="#about">About</a>
+  <a href="#education">Education</a>
+  <a href="#skills">Skills</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<style>
+  .nav-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    animation: fadeInNav 1s ease-in-out;
+  }
+
+  .nav-buttons a {
+    background-color: #00ffcc;
+    color: #000;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+
+  .nav-buttons a:hover {
+    background-color: #fff;
+    color: #000;
+    transform: scale(1.1);
+  }
+
+  @keyframes fadeInNav {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script>
+  // Optional: Smooth scroll
+  document.querySelectorAll('.nav-buttons a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      target?.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+    </header>
+    
+    <section style="position: relative; width: 100%; height: 100vh; overflow: hidden;">
+  <!-- Local Background Video -->
+  <video autoplay muted loop playsinline
+    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+           object-fit: cover; z-index: -1;">
+    <source src="/storage/emulated/0/portfolio /assets/6915808_Motion Graphics_Motion Graphic_1280x720.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+
+  <!-- Dark Overlay -->
+  <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+              background: rgba(0, 0, 0, 0.6); z-index: 0;"></div>
+
+  <!-- Text Content -->
+  <div style="position: relative; z-index: 1; height: 100%; display: flex;
+              flex-direction: column; justify-content: center; align-items: center;
+              text-align: center; color: white; padding: 20px;">
+    <h1 style="font-size: 3rem; margin: 0; color: #00ffe5;">I'm Lakshmi Narayana Naidu</h1>
+    <p style="font-size: 1.2rem; margin-top: 10px; color: #f0f0f0;">
+    </p>
+  </div>
+</section>
+
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        I am a passionate cybersecurity student with over 3 years of experience.
+        Currently pursuing B.Tech in Artificial Intelligence and Machine Learning.
+        I love exploring cybersecurity, penetration testing, and sharing knowledge through my e-learning platform Hack Culprit.
+      </p>
+    </section>
+    
+    <section id="resume">
+      <h2>Resume</h2>
+      <p>You can download my latest resume by clicking the button below:</p>
+      <a class="btn" href="/storage/emulated/0/portfolio /assets/naidu resume.pdf" download>Download Resume</a>
+    </section>
+
+    <section id="education" style="padding: 60px 20px; background-color: #111; color: #fff; text-align: center;">
+  <h2 style="font-size: 2.5rem; color: #00ffcc; margin-bottom: 40px;">Education</h2>
+
+  <!-- B.Tech -->
+  <div class="edu-card" style="max-width: 800px; margin: 20px auto; background: #1a1a1a; padding: 30px; border-radius: 15px; box-shadow: 0 0 20px rgba(0, 255, 204, 0.2); display: flex; flex-wrap: wrap; align-items: center; gap: 20px; animation: fadeInEdu 0.8s ease-in-out;">
+    <img src="/storage/emulated/0/portfolio /assets/images (17).jpeg" alt="B.Tech Logo" style="width: 100px; height: auto; border-radius: 10px;" />
+    <div style="text-align: left; flex: 1;">
+      <h3 style="color: #00ffcc;">Dadi Institute of Engineering and Technology</h3>
+      <p>B.Tech in Artificial Intelligence and Machine Learning</p>
+      <p style="font-size: 0.95rem; color: #ccc;">2021 - 2025</p>
+      <p style="font-size: 0.9rem; color: #aaa;">Visakhapatnam, India</p>
+    </div>
+  </div>
+
+  <!-- Intermediate -->
+  <div class="edu-card" style="max-width: 800px; margin: 20px auto; background: #1a1a1a; padding: 30px; border-radius: 15px; box-shadow: 0 0 20px rgba(0, 255, 204, 0.2); display: flex; flex-wrap: wrap; align-items: center; gap: 20px; animation: fadeInEdu 1s ease-in-out;">
+    <img src="/storage/emulated/0/portfolio /assets/images (18).jpeg" alt="Intermediate Logo" style="width: 100px; height: auto; border-radius: 10px;" />
+    <div style="text-align: left; flex: 1;">
+      <h3 style="color: #00ffcc;">Sri Prakash Junior College</h3>
+      <p>MPC Stream</p>
+      <p style="font-size: 0.95rem; color: #ccc;">2019 - 2021</p>
+      <p style="font-size: 0.9rem; color: #aaa;">Your City, State</p>
+    </div>
+  </div>
+
+  <!-- School -->
+  <div class="edu-card" style="max-width: 800px; margin: 20px auto; background: #1a1a1a; padding: 30px; border-radius: 15px; box-shadow: 0 0 20px rgba(0, 255, 204, 0.2); display: flex; flex-wrap: wrap; align-items: center; gap: 20px; animation: fadeInEdu 1.2s ease-in-out;">
+    <img src="/storage/emulated/0/portfolio /assets/images (18).jpeg" alt="School Logo" style="width: 100px; height: auto; border-radius: 10px;" />
+    <div style="text-align: left; flex: 1;">
+      <h3 style="color: #00ffcc;">Sri Prakash Vidya Niketan</h3>
+      <p>Secondary Education (SSC)</p>
+      <p style="font-size: 0.95rem; color: #ccc;">2018 - 2019</p>
+      <p style="font-size: 0.9rem; color: #aaa;">Your City, State</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes fadeInEdu {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<!-- Add animation style -->
+<style>
+  @keyframes fadeInEdu {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+    <section id="skills">
+      <h2>Skills</h2>
+
+      <div class="skill">
+        <div class="skill-name">Web Development</div>
+        <div class="skill-bar">
+          <div class="skill-level html" style="--skill-width: 60%;"></div>
+        </div>
+      </div>
+
+      <div class="skill">
+        <div class="skill-name">Java</div>
+        <div class="skill-bar">
+          <div class="skill-level js" style="--skill-width: 50%;"></div>
+        </div>
+      </div>
+
+      <div class="skill">
+        <div class="skill-name">Python</div>
+        <div class="skill-bar">
+          <div class="skill-level python" style="--skill-width: 60%;"></div>
+        </div>
+      </div>
+      
+
+      <div class="skill">
+        <div class="skill-name">Cybersecurity & Penetration Testing</div>
+        <div class="skill-bar">
+          <div class="skill-level cybersec" style="--skill-width: 80%;"></div>
+        </div>
+      </div>
+      
+      <div class="skill">
+        <div class="skill-name">Digital Marketing</div>
+        <div class="skill-bar">
+          <div class="skill-level cybersec" style="--skill-width: 50%;"></div>
+        </div>
+        
+        <div class="skill">
+        <div class="skill-name">Graphic Designing</div>
+        <div class="skill-bar">
+          <div class="skill-level cybersec" style="--skill-width: 70%;"></div>
+        </div>
+      </div>
+      </div>
+    </section>
+    <!-- Skills Logo Scroll Section -->
+  <div class="logo-slider">
+    <div class="logos">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="Bash">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java">
+      <!-- Repeat for continuous loop effect -->
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5">
+    </div>
+  </div>
+</section>
+
+<!-- CSS Styles -->
+<style>
+  .logo-slider {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+    position: relative;
+  }
+
+  .logos {
+    display: inline-block;
+    padding-left: 100%;
+    animation: scroll 20s linear infinite;
+  }
+
+  .logos img {
+    height: 60px;
+    margin: 0 30px;
+    vertical-align: middle;
+    transition: transform 0.3s;
+  }
+
+  .logos img:hover {
+    transform: scale(1.2);
+  }
+
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+  }
+</style>
+    <section id="projects" style="padding: 60px 20px; background-color: #0c0c0c; color: #fff; text-align: center;">
+  <h2 style="font-size: 2.5rem; color: #00ffcc; margin-bottom: 40px;">Projects</h2>
+
+  <div class="project-grid" style="display: grid; gap: 30px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); max-width: 1000px; margin: auto;">
+    
+    <!-- Project 1 -->
+    <div class="project-card" style="background: #1a1a1a; border-radius: 15px; padding: 25px; box-shadow: 0 0 15px rgba(0, 255, 204, 0.15); transition: transform 0.3s ease;">
+      <h3 style="color: #00ffcc;">Caesar Cipher Program</h3>
+      <p style="color: #ccc;">A Python program allows users to encrypt and decrypt text using the Caesar Cipher algorithm.</p>
+      <p style="font-size: 0.9rem; color: #aaa;">Tech Stack: Python</p>
+      <a href="https://github.com/Naidu2342/Basic-Caesar-Cipher-Program.git" target="_blank" style="display: inline-block; margin-top: 10px; color: #00ffcc; text-decoration: underline;">View on GitHub</a>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="project-card" style="background: #1a1a1a; border-radius: 15px; padding: 25px; box-shadow: 0 0 15px rgba(0, 255, 204, 0.15); transition: transform 0.3s ease;">
+      <h3 style="color: #00ffcc;">Simple Packet Sniffer</h3>
+      <p style="color: #ccc;">This project is a simple packet sniffer built using Python and the Scapy library. It captures network packets and displays basic information, including the source and destination IP addresses, protocol type (TCP/UDP), port numbers, and payload data if available.</p>
+      <p style="font-size: 0.9rem; color: #aaa;">Tech Stack: Python, Scapy</p>
+      <a href="https://github.com/Naidu2342/simplepacketsniffer.git" target="_blank" style="display: inline-block; margin-top: 10px; color: #00ffcc; text-decoration: underline;">View on Github</a>
+    </div>
+    
+    <!-- Project 3 -->
+    <div class="project-card" style="background: #1a1a1a; border-radius: 15px; padding: 25px; box-shadow: 0 0 15px rgba(0, 255, 204, 0.15); transition: transform 0.3s ease;">
+      <h3 style="color: #00ffcc;">Book Shelf App</h3>
+      <p style="color: #ccc;">A no-code mobile app using AppCreator24 to let users request and read books added by developers.</p>
+      <p style="font-size: 0.9rem; color: #aaa;">Tech Stack: AppCreator24, Firebase</p>
+      <a href="https://www.appcreator24.com/app1526961-48c6w0" target="_blank" style="display: inline-block; margin-top: 10px; color: #00ffcc; text-decoration: underline;">View Demo</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- Optional: Hover animation -->
+<style>
+  .project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 25px rgba(0, 255, 204, 0.3);
+  }
+</style>
+    
+    <section id="experience" style="padding: 60px 20px; background-color: #111; color: #fff; text-align: center;">
+  <h2 style="font-size: 2.5rem; color: #00ffcc; margin-bottom: 40px;">Experience</h2>
+
+  <div class="timeline" style="position: relative; max-width: 800px; margin: auto;">
+    
+    <!-- Timeline Line -->
+    <div style="content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 3px; background-color: #00ffcc; transform: translateX(-50%);"></div>
+
+    <!-- Experience Item 1 -->
+    <div class="timeline-item" style="padding: 20px 40px; position: relative; width: 50%; left: 0;">
+      <div style="background: #1a1a1a; padding: 20px; border-radius: 12px; box-shadow: 0 0 15px rgba(0, 255, 204, 0.15); animation: slideInLeft 0.6s ease;">
+        <h3 style="color: #00ffcc;">Cybersecurity Intern</h3>
+        <p style="color: #ccc;">Prodigy Infotech</p>
+        <p style="font-size: 0.9rem; color: #aaa;">October 2024 - November 2024</p>
+      </div>
+    </div>
+
+    <!-- Experience Item 2 -->
+    <div class="timeline-item" style="padding: 20px 40px; position: relative; width: 50%; left: 50%;">
+      <div style="background: #1a1a1a; padding: 20px; border-radius: 12px; box-shadow: 0 0 15px rgba(0, 255, 204, 0.15); animation: slideInRight 0.6s ease;">
+        <h3 style="color: #00ffcc;">Cybersecurity Intern</h3>
+        <p style="color: #ccc;">Codec Technolgies</p>
+        <p style="font-size: 0.9rem; color: #aaa;">Febrauary 2025 - March 2025</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Animations -->
+<style>
+  @keyframes slideInLeft {
+    from {
+      transform: translateX(-30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideInRight {
+    from {
+      transform: translateX(30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .timeline-item {
+      width: 100% !important;
+      left: 0 !important;
+    }
+  }
+</style>
+    
+   <section id="certifications" style="background: #0d0d0d; padding: 60px 20px; color: #fff; text-align: center;">
+  <h2 style="color: #00ffcc; font-size: 2.5rem; margin-bottom: 40px;">Certifications</h2>
+  
+  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
+    
+    <!-- Card 1 -->
+    <div class="cert-card">
+      <img src="/storage/emulated/0/portfolio /assets/images (2).png" alt="Certificate Logo" class="cert-icon">
+      <h3>Introduction to Cybersecurity</h3>
+      <p>Cisco | March 2024</p>
+      </div>
+
+    <!-- Card 2 -->
+    <div class="cert-card">
+      <img src="/storage/emulated/0/portfolio /assets/google.png" alt="Certificate Logo" class="cert-icon">
+      <h3>Foundations of Cybersecurity</h3>
+      <p>Coursera | April 2024</p>
+      </div>
+
+    <!-- Card 3 -->
+    <div class="cert-card">
+      <img src="/storage/emulated/0/portfolio /assets/images (19).jpeg" alt="Certificate Logo" class="cert-icon">
+      <h3>Basics of Cybersecurity associate</h3>
+      <p>Reliance | Dec 2024</p>
+      </div>
+    
+    <!-- Card 4 -->
+    <div class="cert-card">
+      <img src="/storage/emulated/0/portfolio /assets/images (20).jpeg" alt="Certificate Logo" class="cert-icon">
+      <h3>Cybersecurity Fundamentals</h3>
+      <p>Palo alto Networks | Jul 2024</p>
+      </div>
+    
+    <!-- Card 5 -->
+    <div class="cert-card">
+      <img src="/storage/emulated/0/portfolio /assets/images (21).jpeg" alt="Certificate Logo" class="cert-icon">
+      <h3>Basics of Cybersecurity</h3>
+      <p>IBM EDX | Jun 2024</p>
+    </div>
+    
+    <!-- Card 6 -->
+    <div class="cert-card">
+      <img src="/storage/emulated/0/portfolio /assets/images (22).jpeg" alt="Certificate Logo" class="cert-icon">
+      <h3>Vois Cybersecurity</h3>
+      <p>VOIS | May 2023</p>
+    </div>
+    
+    <!-- Card 7 -->
+    <div class="cert-card">
+      <img src="/storage/emulated/0/portfolio /assets/images (23).jpeg" alt="Certificate Logo" class="cert-icon">
+      <h3>Basics of Cybersecurity</h3>
+      <p>Tech Mahindra | Nov 2024</p>
+    </div>
+  </div>
+</section>
+
+<!-- Styles -->
+<style>
+  .cert-card {
+    background: #1a1a1a;
+    padding: 25px;
+    border-radius: 15px;
+    width: 250px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 12px rgba(0, 255, 204, 0.15);
+    text-align: center;
+    position: relative;
+  }
+
+  .cert-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.35);
+  }
+
+  .cert-icon {
+    width: 60px;
+    margin-bottom: 15px;
+  }
+
+  .cert-card h3 {
+    color: #00ffcc;
+    margin-bottom: 8px;
+  }
+
+  .cert-card p {
+    font-size: 0.9rem;
+    color: #ccc;
+    margin-bottom: 15px;
+  }
+
+  .view-btn {
+    padding: 8px 16px;
+    background: #00ffcc;
+    color: #000;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s;
+  }
+
+  .view-btn:hover {
+    background: #00ddbb;
+  }
+
+  @media(max-width: 768px) {
+    .cert-card {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+</style>
+<!-- Animation -->
+<style>
+  @keyframes fadeUp {
+    from {
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .cert-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>
+
+    <section id="contact">
+      <h2>Contact Me</h2>
+      <form action="https://formspree.io/f/xanozeaz" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" rows="5" placeholder="Your Message..." required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+    
+ <!-- SOCIAL MEDIA SECTION (Paste where needed in your HTML body) -->
+<section id="social-section" style="text-align: center; margin: 60px 0;">
+  <h2 style="font-size: 2rem; color: #00ffcc; margin-bottom: 20px;">Connect With Me</h2>
+  <div id="social-links" style="display: flex; justify-content: center; gap: 30px; animation: fadeInIcons 1s ease-in-out;">
+    <a href="https://www.linkedin.com/in/naidu-rapeta-b52100217/" target="_blank" title="LinkedIn" style="font-size: 2rem; color: #fff; transition: transform 0.3s, color 0.3s;">
+      <i class="fab fa-linkedin"></i>
+    </a>
+    <a href="https://github.com/Naidu2342" target="_blank" title="GitHub" style="font-size: 2rem; color: #fff; transition: transform 0.3s, color 0.3s;">
+      <i class="fab fa-github"></i>
+    </a>
+    <a href="https://x.com/NaiduRapeta?t=PiktcJnfwrLIhqJJUw_qGw&s=09" target="_blank" title="Twitter" style="font-size: 2rem; color: #fff; transition: transform 0.3s, color 0.3s;">
+      <i class="fab fa-twitter"></i>
+    </a>
+    <a href="https://www.instagram.com/naidurapeta?igsh=bXlqcHc3ZHd1OWgx" title="Email" style="font-size: 2rem; color: #fff; transition: transform 0.3s, color 0.3s;">
+      <i class="fas fa-instagram"></i>
+    </a>
+    <a href="mailto:rapetanaidu478@gmail.com" title="Email" style="font-size: 2rem; color: #fff; transition: transform 0.3s, color 0.3s;">
+  <i class="fas fa-envelope"></i>
+</a>
+  </div>
+
+  <!-- Inline CSS animation -->
+  <style>
+    @keyframes fadeInIcons {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    #social-links a:hover {
+      color: #00ffcc !important;
+      transform: scale(1.2);
+    }
+  </style>
+
+  <!-- JS animation delay -->
+  <script>
+    document.querySelectorAll('#social-links a').forEach((link, i) => {
+      link.style.animation = `fadeInIcons 0.5s ease forwards ${i * 0.2}s`;
+    });
+  </script>
+</section>
+  
+  <footer style="background: #0a0a0a; color: #ccc; text-align: center; padding: 20px 10px; font-size: 0.9rem;">
+  <p>&copy; 2025 Lakshmi Narayana Naidu. All rights reserved.</p>
+  <p>Made with passion </p>
+</footer>
+
+<!-- Font Awesome (include once in your <head>) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- Font Awesome (include once in your <head>) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  </div>
+</body>
+</html>
